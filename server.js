@@ -20,7 +20,7 @@ app.use(function validateBearerToken(req, res, next) {
 
     //console.log('validate bearer token middleware');
 
-    if (!authToken || authToken !== apiToken) {
+    if (!authToken || authToken.split(' ')[0] !== apiToken) {
         return res.status(401).json({ error: 'Unauthorized request' });
     }
     // move to the next middleware
